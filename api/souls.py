@@ -7,7 +7,7 @@ import model
 souls_api = flask.Blueprint('souls_api', __name__, url_prefix = '/api/souls')
 api = flask_restful.Api(souls_api)
 
-class SoulsAPI:
+class testAPI:
 
     # reads the data
     class _Get(flask_restful.Resource):
@@ -53,6 +53,19 @@ class SoulsAPI:
     api.add_resource(_Get, '/get/<int:data_id>')
     api.add_resource(_Add, '/add')
     api.add_resource(_Delete, '/delete/<int:data_id>')
+
+def damage(attack, resistance, power):
+    basicattack = attack
+    enhancedattack = attack * power
+    ultimateattack = attack * power * power
+
+    baiscattackdamage = basicattack/resistance
+    enhancedattackdamage = enhancedattack/resistance
+    ultimateattackdamage = ultimateattack/resistance
+
+class soulsAPI:
+    pass
+
 
 if __name__ == "__main__":
     app.run(port=5001)
