@@ -1,7 +1,7 @@
 import flask
 import flask_restful
 
-import model
+from model.souls import souls
 
 # blueprint to organize the code
 souls_api = flask.Blueprint('souls_api', __name__, url_prefix = '/api/souls')
@@ -15,13 +15,13 @@ class testAPI:
         # reads from data_id if given
         def get(self, data_id = None):
             if data_id:
-                number = model.souls.data.get(data_id)
+                number = model.souls.get(data_id)
                 if number:
                     return {'id': data_id, 'data': number}
                 else:
                     return {'error': 'Not Found'}
             else:
-                return {'data': model.souls.data}
+                return {'data': model.souls}
         
     # adds to the data
     class _Add(flask_restful.Resource):
@@ -35,16 +35,16 @@ class testAPI:
 
                 # adds a new id in data
                 id = max(model.souls.data.keys()) + 1
-                model.souls.data[id] = {key: value}
-                return {'success': model.souls.data[id]}
+                model.souls.souls[id] = {key: value}
+                return {'success': model.souls[id]}
             else:
                 return {'error': 'Invalid Data'}
 
     # delete from the data
     class _Delete(flask_restful.Resource):
         def delete(self, data_id):
-            if data_id in model.souls.data:
-                del model.souls.data[data_id]
+            if data_id in model.souls.souls:
+                del model.souls[data_id]
                 return {'success': data_id}
             else:
                 return {'error': "Not Found"}

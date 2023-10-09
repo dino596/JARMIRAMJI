@@ -1,3 +1,5 @@
+from __init__ import app,db
+
 
 # initializes data_id
 class Data:
@@ -5,7 +7,7 @@ class Data:
         self.id = data_id
 
 # test data
-data = {
+souls = {
     0: "zero",
     1: "one",
     2: "two"
