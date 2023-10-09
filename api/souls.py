@@ -62,10 +62,11 @@ def damage(attack, resistance, power):
     baiscattackdamage = basicattack/resistance
     enhancedattackdamage = enhancedattack/resistance
     ultimateattackdamage = ultimateattack/resistance
+    return
 
 class soulsAPI:
     pass
 
-
+app = flask.Flask(__name__)
 if __name__ == "__main__":
     app.run(port=5001)
