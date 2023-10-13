@@ -16,6 +16,7 @@ souls = {
 # classes
 # If have time, add items, weight and percent to dodge, weapon types
 # key: "0" is hp, "1" is attack, "2" is resistance, "3" is power (factor to multiply acctack())
+# put following classes into a list of dictionaries
 god = {
     0: 10000,
     1: 10000,
