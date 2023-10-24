@@ -25,7 +25,7 @@ class SoulsCharacterAPI(Resource):
         parser.add_argument("resistance", required=True, type=int)
         parser.add_argument("power", required=True, type=int)
         args = parser.parse_args()
-        souls = Souls(args["name"], args["gender"], args["age"], args["class_name"], args["health"], args["attack"], args["resistance"], args["power"])
+        soulsCharacter = SoulsCharacter(args["name"], args["gender"], args["age"], args["class_name"], args["health"], args["attack"], args["resistance"], args["power"])
 
         try:
             db.session.add(soulsCharacter)
@@ -49,7 +49,7 @@ class SoulsCharacterAPI(Resource):
         args = parser.parse_args()
         
         try:
-            soulsCharacter = db.session.query(Souls).get(args["id"])
+            soulsCharacter = db.session.query(SoulsCharacter).get(args["id"])
             if soulsCharacter:
                 if args["name"] is not None:
                     soulsCharacter.name = args["name"]
