@@ -1,11 +1,12 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource, reqparse
+from flask_cors import CORS
 from __init__ import db
 from model.soulsCharacter import SoulsCharacter
 
 soulsCharacter_bp = Blueprint("soulsCharacter", __name__)
 soulsCharacter_api = Api(soulsCharacter_bp)
-
+CORS(soulsCharacter_bp)
 class SoulsCharacterAPI(Resource):
     def get(self):
         id = request.args.get("id")
